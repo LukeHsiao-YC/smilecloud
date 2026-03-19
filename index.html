@@ -15,7 +15,7 @@
   <script type="text/babel" data-type="module">
     import React, { useState } from 'https://esm.sh/react@18';
     import { createRoot } from 'https://esm.sh/react-dom@18/client';
-    import { Cloud, Activity, BookOpen, Calendar, MapPin, ArrowRight, Menu, X, ChevronRight, Heart, ClipboardCheck } from 'https://esm.sh/lucide-react@0.292.0';
+    import { Cloud, Activity, BookOpen, Calendar, MapPin, ArrowRight, Menu, X, ChevronRight, Heart, ClipboardCheck, Facebook, MessageCircle } from 'https://esm.sh/lucide-react@0.292.0';
 
     const mockArticles = [
       {
@@ -41,12 +41,6 @@
       }
     ];
 
-    const mockLectures = [
-      { id: 1, school: '旗山國小', date: '2025-10', topic: '兒童健康體位宣導與實作' },
-      { id: 2, school: '富里國中', date: '2025-11', topic: '青春期營養與運動處方' },
-      { id: 3, school: '高雄市立圖書館', date: '2026-01', topic: '親子健康飲食講座' }
-    ];
-
     function App() {
       const [currentPage, setCurrentPage] = useState('home');
       const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -67,7 +61,7 @@
                 <button onClick={() => setCurrentPage('blog')} className="text-slate-600 hover:text-sky-500 font-medium transition-colors">知識加油站</button>
                 <a href="#lectures" onClick={(e) => { if(currentPage !== 'home') { setCurrentPage('home'); } }} className="text-slate-600 hover:text-sky-500 font-medium transition-colors">活動足跡</a>
                 <a href="https://docs.google.com/forms" target="_blank" rel="noreferrer" className="bg-sky-400 hover:bg-sky-500 text-white px-6 py-2.5 rounded-full font-bold transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
-                  預約演講
+                  表單邀約
                 </a>
               </div>
 
@@ -83,7 +77,7 @@
             <div className="md:hidden bg-white border-t border-sky-50 px-4 pt-2 pb-4 space-y-2 shadow-lg">
               <button onClick={() => { setCurrentPage('home'); setIsMobileMenuOpen(false); }} className="block w-full text-left px-3 py-2 text-slate-600 font-medium">首頁</button>
               <button onClick={() => { setCurrentPage('blog'); setIsMobileMenuOpen(false); }} className="block w-full text-left px-3 py-2 text-slate-600 font-medium">知識加油站</button>
-              <a href="https://docs.google.com/forms" className="block w-full text-center mt-4 bg-sky-400 text-white px-3 py-3 rounded-xl font-bold">預約演講</a>
+              <a href="https://docs.google.com/forms" className="block w-full text-center mt-4 bg-sky-400 text-white px-3 py-3 rounded-xl font-bold">表單邀約</a>
             </div>
           )}
         </nav>
@@ -110,7 +104,6 @@
                   我是健康冒險島的島主超人醫師蕭宇超，歡迎登島！在這裡我們不只是在談體重，更是在打造一個讓孩子愛上運動與健康生活的世界。透過趣味互動與專業指引，讓健康習慣自然養成。
                 </p>
                 
-                {/* 登島指南小卡片 */}
                 <div className="bg-white/60 backdrop-blur-md rounded-3xl p-6 md:p-8 text-left border border-sky-100 shadow-sm max-w-2xl mx-auto">
                   <p className="font-bold text-sky-700 mb-5 flex items-center gap-2 text-xl">
                     <MapPin className="text-sky-500" size={24}/>
@@ -166,7 +159,6 @@
 
               <div className="grid md:grid-cols-3 gap-8">
                 
-                {/* 卡片 1：健康冒險島 */}
                 <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 hover:shadow-xl hover:border-sky-200 transition-all group flex flex-col h-full">
                   <div className="bg-sky-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                     <Cloud className="text-sky-500 h-8 w-8" />
@@ -180,7 +172,6 @@
                   </a>
                 </div>
 
-                {/* 卡片 2：身材檢測站 */}
                 <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 hover:shadow-xl hover:border-sky-200 transition-all group flex flex-col h-full">
                   <div className="bg-indigo-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                     <ClipboardCheck className="text-indigo-500 h-8 w-8" />
@@ -194,7 +185,6 @@
                   </a>
                 </div>
 
-                {/* 卡片 3：運動專屬處方 */}
                 <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100 hover:shadow-xl hover:border-sky-200 transition-all group flex flex-col h-full">
                   <div className="bg-amber-100 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                     <Activity className="text-amber-500 h-8 w-8" />
@@ -214,34 +204,20 @@
 
           <section id="lectures" className="py-20 bg-white">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-                <div>
-                  <h2 className="text-3xl font-bold text-slate-800 mb-4">活動與校園足跡</h2>
-                  <p className="text-slate-600">把健康觀念帶進校園，讓專業知識成為老師與家長的神隊友。</p>
+              <div className="bg-slate-50 rounded-3xl p-8 md:p-12 border border-slate-100 flex flex-col md:flex-row md:items-center justify-between gap-8">
+                <div className="flex-1">
+                  <h2 className="text-3xl font-bold text-slate-800 mb-6">活動與校園足跡</h2>
+                  <p className="text-slate-600 text-lg leading-relaxed mb-4">
+                    過去除了在醫院診間傳遞健康體態的秘訣，我也在許多校園以及社區分享，也期待能有機會能把健康知識分享給更多人。
+                  </p>
+                  <p className="text-slate-600 text-lg">
+                    演講邀約歡迎來信：
+                    <a href="mailto:u9602041@gmail.com" className="text-sky-600 font-bold hover:underline transition-all break-all">u9602041@gmail.com</a>
+                  </p>
                 </div>
-                <a href="https://docs.google.com/forms" target="_blank" rel="noreferrer" className="bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 rounded-xl font-bold transition-colors inline-flex items-center justify-center gap-2">
-                  <Calendar size={18} /> 邀約演講合作
+                <a href="https://docs.google.com/forms" target="_blank" rel="noreferrer" className="bg-slate-800 hover:bg-slate-700 text-white px-8 py-4 rounded-xl font-bold transition-colors inline-flex items-center justify-center gap-2 shrink-0 shadow-md hover:shadow-lg">
+                  <Calendar size={20} /> 填寫邀約表單
                 </a>
-              </div>
-
-              <div className="bg-slate-50 rounded-3xl p-6 md:p-10 border border-slate-100">
-                <div className="space-y-6">
-                  {mockLectures.map((lecture) => (
-                    <div key={lecture.id} className="flex flex-col sm:flex-row sm:items-center p-4 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow border border-slate-50">
-                      <div className="flex items-center gap-2 text-sky-500 font-bold min-w-[120px] mb-2 sm:mb-0">
-                        <Calendar size={16} />
-                        <span>{lecture.date}</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-slate-700 font-bold min-w-[180px] mb-2 sm:mb-0">
-                        <MapPin size={16} className="text-amber-400" />
-                        <span>{lecture.school}</span>
-                      </div>
-                      <div className="text-slate-600 flex-grow">
-                        {lecture.topic}
-                      </div>
-                    </div>
-                  ))}
-                </div>
               </div>
             </div>
           </section>
@@ -290,13 +266,26 @@
           <div className="flex-grow">
             {currentPage === 'home' ? <HomeContent /> : <BlogContent />}
           </div>
-          <footer className="bg-slate-900 text-slate-400 py-12 text-center">
+          
+          <footer className="bg-slate-900 text-slate-400 py-16 text-center">
             <div className="max-w-6xl mx-auto px-4">
               <div className="flex items-center justify-center gap-2 mb-6 text-white text-xl font-bold">
                 <Cloud className="text-sky-400" /> Smilecloud
               </div>
-              <p className="mb-6">讓專業知識走進家庭，陪伴孩子健康成長。</p>
-              <div className="text-sm">
+              <p className="mb-10 text-slate-300">讓專業知識走進家庭，陪伴孩子健康成長。</p>
+              
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+                <a href="https://www.facebook.com/share/1FoPpvVSZs/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-slate-800 hover:bg-blue-600 text-white px-8 py-3.5 rounded-full font-medium transition-all w-full sm:w-auto justify-center shadow-md">
+                  <Facebook size={20} />
+                  <span>告別雲朵人</span>
+                </a>
+                <a href="https://lin.ee/fAzcScx" target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-slate-800 hover:bg-[#06C755] text-white px-8 py-3.5 rounded-full font-medium transition-all w-full sm:w-auto justify-center shadow-md">
+                  <MessageCircle size={20} />
+                  <span>宇超醫師｜你的超級夥伴</span>
+                </a>
+              </div>
+
+              <div className="text-sm border-t border-slate-800 pt-8">
                 © 2026 蕭宇超醫師. All rights reserved.
               </div>
             </div>
@@ -310,3 +299,5 @@
   </script>
 </body>
 </html>
+
+
