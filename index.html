@@ -15,41 +15,16 @@
   <script type="text/babel" data-type="module">
     import React, { useState } from 'https://esm.sh/react@18';
     import { createRoot } from 'https://esm.sh/react-dom@18/client';
-    import { Cloud, Activity, BookOpen, MapPin, ArrowRight, Menu, X, ChevronRight, Heart, ClipboardCheck, Facebook, MessageCircle, User, Clock, Award, Briefcase, Star, Mail } from 'https://esm.sh/lucide-react@0.292.0';
-
-    const mockArticles = [
-      {
-        id: 1,
-        title: '便利商店早餐怎麼挑？避開地雷組合',
-        date: '2026-03-15',
-        summary: '早上趕時間只能吃便利商店？教你用「碳水+蛋白質」的口訣，幫孩子挑出有飽足感又不會血糖亂飆的健康早餐。',
-        category: '飲食營養'
-      },
-      {
-        id: 2,
-        title: '孩子不愛動怎麼辦？3個遊戲化小技巧',
-        date: '2026-03-02',
-        summary: '逼孩子去跑步只會造成反效果。試著把運動變成破關任務，或是利用家裡的枕頭和紙箱，把客廳變成體能訓練場！',
-        category: '運動培養'
-      },
-      {
-        id: 3,
-        title: '認識紅黃綠燈食物：寫給家長的採買指南',
-        date: '2026-02-18',
-        summary: '不是所有零食都不能吃！帶你看懂食品標示，學會分辨哪些是能天天吃的綠燈食物，哪些是偶爾解饞的紅燈食物。',
-        category: '飲食營養'
-      }
-    ];
+    import { Cloud, Activity, MapPin, ArrowRight, Menu, X, Heart, ClipboardCheck, Facebook, MessageCircle, User, Clock, Award, Briefcase, Star, Mail } from 'https://esm.sh/lucide-react@0.292.0';
 
     function App() {
-      const [currentPage, setCurrentPage] = useState('home');
       const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
       const Navbar = () => (
         <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-sky-100">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between h-20">
-              <div className="flex items-center cursor-pointer" onClick={() => setCurrentPage('home')}>
+              <div className="flex items-center cursor-pointer" onClick={() => window.scrollTo(0, 0)}>
                 <div className="bg-sky-400 p-2 rounded-2xl mr-3">
                   <Cloud className="text-white h-6 w-6" strokeWidth={2.5} />
                 </div>
@@ -57,10 +32,10 @@
               </div>
               
               <div className="hidden md:flex items-center space-x-8">
-                <button onClick={() => setCurrentPage('home')} className="text-slate-600 hover:text-sky-500 font-medium transition-colors">首頁</button>
-                <button onClick={() => setCurrentPage('blog')} className="text-slate-600 hover:text-sky-500 font-medium transition-colors">知識加油站</button>
-                <a href="#about" onClick={(e) => { if(currentPage !== 'home') { setCurrentPage('home'); } }} className="text-slate-600 hover:text-sky-500 font-medium transition-colors">關於醫師</a>
-                <a href="#contact" onClick={(e) => { if(currentPage !== 'home') { setCurrentPage('home'); } }} className="bg-sky-400 hover:bg-sky-500 text-white px-6 py-2.5 rounded-full font-bold transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                <button onClick={() => window.scrollTo(0, 0)} className="text-slate-600 hover:text-sky-500 font-medium transition-colors">首頁</button>
+                <a href="#features" className="text-slate-600 hover:text-sky-500 font-medium transition-colors">互動區</a>
+                <a href="#about" className="text-slate-600 hover:text-sky-500 font-medium transition-colors">關於醫師</a>
+                <a href="#contact" className="bg-sky-400 hover:bg-sky-500 text-white px-6 py-2.5 rounded-full font-bold transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
                   聯絡我們
                 </a>
               </div>
@@ -75,10 +50,10 @@
 
           {isMobileMenuOpen && (
             <div className="md:hidden bg-white border-t border-sky-50 px-4 pt-2 pb-4 space-y-2 shadow-lg">
-              <button onClick={() => { setCurrentPage('home'); setIsMobileMenuOpen(false); }} className="block w-full text-left px-3 py-2 text-slate-600 font-medium">首頁</button>
-              <button onClick={() => { setCurrentPage('blog'); setIsMobileMenuOpen(false); }} className="block w-full text-left px-3 py-2 text-slate-600 font-medium">知識加油站</button>
-              <a href="#about" onClick={() => { setCurrentPage('home'); setIsMobileMenuOpen(false); }} className="block w-full text-left px-3 py-2 text-slate-600 font-medium">關於醫師</a>
-              <a href="#contact" onClick={() => { setCurrentPage('home'); setIsMobileMenuOpen(false); }} className="block w-full text-center mt-4 bg-sky-400 text-white px-3 py-3 rounded-xl font-bold">聯絡我們</a>
+              <button onClick={() => { window.scrollTo(0, 0); setIsMobileMenuOpen(false); }} className="block w-full text-left px-3 py-2 text-slate-600 font-medium">首頁</button>
+              <a href="#features" onClick={() => setIsMobileMenuOpen(false)} className="block w-full text-left px-3 py-2 text-slate-600 font-medium">互動區</a>
+              <a href="#about" onClick={() => setIsMobileMenuOpen(false)} className="block w-full text-left px-3 py-2 text-slate-600 font-medium">關於醫師</a>
+              <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="block w-full text-center mt-4 bg-sky-400 text-white px-3 py-3 rounded-xl font-bold">聯絡我們</a>
             </div>
           )}
         </nav>
@@ -139,19 +114,14 @@
                 </div>
 
               </div>
-              <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#features" className="bg-amber-400 hover:bg-amber-500 text-slate-900 px-8 py-4 rounded-full font-bold text-lg transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-2">
-                  探索互動區
+              <div className="flex justify-center mt-8">
+                <a href="#features" className="bg-amber-400 hover:bg-amber-500 text-slate-900 px-10 py-4 rounded-full font-bold text-xl transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                  開始探索互動區
                 </a>
-                <button onClick={() => setCurrentPage('blog')} className="bg-white hover:bg-sky-50 text-sky-600 border-2 border-sky-100 px-8 py-4 rounded-full font-bold text-lg transition-all flex items-center justify-center gap-2">
-                  <BookOpen size={20} />
-                  知識加油站
-                </button>
               </div>
             </div>
           </section>
 
-          {/* 探索互動區 */}
           <section id="features" className="py-20 bg-slate-50">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
@@ -204,13 +174,11 @@
             </div>
           </section>
 
-          {/* 關於醫師區塊 */}
           <section id="about" className="py-20 bg-white">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="bg-sky-50 rounded-3xl p-8 md:p-12 border border-sky-100 shadow-sm">
                 <div className="flex flex-col lg:flex-row gap-12">
                   
-                  {/* 左側自我介紹 */}
                   <div className="lg:w-5/12">
                      <h2 className="text-3xl font-bold text-slate-800 mb-6 flex items-center gap-3">
                        <span className="bg-sky-400 p-2.5 rounded-2xl text-white"><User size={24} /></span>
@@ -223,7 +191,6 @@
                        除了在醫院內的醫療處置，我也走進校園進行一對一的傳遞健康體位知識，並長期在校園、親子館、政府機關進行相關的衛教演講。同時也努力開發跟推廣各種有趣的線上互動遊戲，讓更多人可以朝健康的生活邁進！
                      </p>
                      
-                     {/* 門診時間卡片 */}
                      <div className="bg-white p-6 rounded-2xl shadow-sm border border-sky-100">
                        <h3 className="text-lg font-bold text-sky-700 mb-4 flex items-center gap-2">
                          <Clock size={18} /> 門診時間
@@ -241,7 +208,6 @@
                      </div>
                   </div>
 
-                  {/* 右側經歷專長 */}
                   <div className="lg:w-7/12 space-y-6">
                      
                      <div className="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-sky-100">
@@ -296,7 +262,6 @@
             </div>
           </section>
 
-          {/* 演講邀約區塊 */}
           <section id="contact" className="py-20 bg-slate-50">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="bg-white rounded-3xl p-8 md:p-12 border border-slate-100 shadow-sm text-center">
@@ -325,47 +290,11 @@
         </div>
       );
 
-      const BlogContent = () => (
-        <div className="animate-in fade-in duration-500 min-h-screen bg-slate-50 py-12">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="mb-12">
-              <button onClick={() => setCurrentPage('home')} className="text-sky-500 hover:text-sky-700 font-medium mb-6 inline-flex items-center">
-                <ArrowRight className="mr-2 h-4 w-4 rotate-180" /> 回首頁
-              </button>
-              <h1 className="text-4xl font-bold text-slate-800 mb-4">知識加油站</h1>
-              <p className="text-xl text-slate-600">寫給家長的實戰指南，輕鬆看懂兒童營養與成長密碼。</p>
-            </div>
-
-            <div className="space-y-8">
-              {mockArticles.map((article) => (
-                <article key={article.id} className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow cursor-pointer group">
-                  <div className="flex items-center gap-4 mb-4">
-                    <span className="bg-sky-100 text-sky-700 px-3 py-1 rounded-full text-sm font-bold">
-                      {article.category}
-                    </span>
-                    <span className="text-slate-400 text-sm font-medium">{article.date}</span>
-                  </div>
-                  <h2 className="text-2xl font-bold text-slate-800 mb-3 group-hover:text-sky-600 transition-colors">
-                    {article.title}
-                  </h2>
-                  <p className="text-slate-600 leading-relaxed mb-6">
-                    {article.summary}
-                  </p>
-                  <div className="text-sky-500 font-bold flex items-center">
-                    繼續閱讀 <ChevronRight className="ml-1 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </div>
-      );
-
       return (
         <div className="min-h-screen bg-slate-50 font-sans selection:bg-sky-200 flex flex-col">
           <Navbar />
           <div className="flex-grow">
-            {currentPage === 'home' ? <HomeContent /> : <BlogContent />}
+            <HomeContent />
           </div>
           
           <footer className="bg-slate-900 text-slate-400 py-16 text-center">
